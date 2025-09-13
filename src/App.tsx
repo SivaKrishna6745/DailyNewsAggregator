@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './App.css';
-import useNewsStore, { type Article } from './store/newsStore';
+import useNewsStore from './store/newsStore';
+import { type Article } from './types/news';
 
 function App() {
     const { articles, loading, error, fetchArticles } = useNewsStore();

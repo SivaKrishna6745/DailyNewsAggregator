@@ -1,22 +1,5 @@
 import { create } from 'zustand';
-
-export type Article = {
-    id: number;
-    title: string;
-    description: string;
-    source: {
-        name: string;
-    };
-    url: string;
-    urlToImage: string;
-};
-
-type News = {
-    articles: Article[];
-    loading: boolean;
-    error: string | null;
-    fetchArticles: () => Promise<void>;
-};
+import { type News } from '../types/news';
 
 const mockArticles = [
     {
