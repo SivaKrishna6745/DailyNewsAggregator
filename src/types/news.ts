@@ -15,3 +15,12 @@ export type News = {
     error: string | null;
     fetchArticles: () => Promise<void>;
 };
+
+export type MoodKey = 'positive' | 'negative' | 'neutral';
+
+export type MoodMapObject = {
+    [key in MoodKey]: {
+        color: string;
+        emoji: string;
+    };
+};

@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 import useNewsStore from './store/newsStore';
 import { type Article } from './types/news';
 import useMoodAnalysis from './hooks/useMoodAnalysis';
 import NewsList from './components/NewsList';
 import UserMoodAnalyzer from './components/UserMoodAnalyzer';
+import { moodMap } from './constants/constants';
 
 function App() {
     const { articles, loading, error, fetchArticles } = useNewsStore();
@@ -16,6 +17,7 @@ function App() {
         .join(' ')
         .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
     const { mood } = useMoodAnalysis(completeArticle);
+    console.log(moodMap[mood].color);
 
     return (
         <>
@@ -27,7 +29,9 @@ function App() {
                 <>
                     <h1 className="text-3xl">Daily News Aggregator</h1>
                     <hr className="m-8" />
-                    <h2 className="text-2xl capitalize m-8">Today's news is {mood}</h2>
+                    <h2 className="text-2xl capitalize m-8" style={{ color: moodMap[mood].color }}>
+                        Today's news is {mood} {moodMap[mood].emoji}
+                    </h2>
                     <NewsList articles={articles} />
                     <UserMoodAnalyzer />
                 </>

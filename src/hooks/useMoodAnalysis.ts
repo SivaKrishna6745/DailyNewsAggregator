@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { POSITIVES, NEGATIVES } from '../constants/constants';
+import { type MoodKey } from '../types/news';
 
 const useMoodAnalysis = (input: string) => {
     const headlineWords = input.toLowerCase().split(' ');
@@ -15,7 +16,7 @@ const useMoodAnalysis = (input: string) => {
         });
         return { positivesCount, negativesCount };
     }, [cleanHeadlineWords]);
-    const mood =
+    const mood: MoodKey =
         positivesCount > negativesCount ? 'positive' : positivesCount === negativesCount ? 'neutral' : 'negative';
 
     return {

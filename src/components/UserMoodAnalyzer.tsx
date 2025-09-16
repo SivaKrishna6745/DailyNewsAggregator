@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useMoodAnalysis from '../hooks/useMoodAnalysis';
+import { moodMap } from '../constants/constants';
 
 const UserMoodAnalyzer = () => {
     const [typedInput, setTypedInput] = useState<string>('');
@@ -27,7 +28,11 @@ const UserMoodAnalyzer = () => {
                     Analyze
                 </button>
             </div>
-            {mood && <h2 className="text-2xl capitalize m-8">User mood is {mood}</h2>}
+            {mood && (
+                <h2 className="text-2xl capitalize m-8" style={{ color: moodMap[mood].color }}>
+                    User mood is {mood} {moodMap[mood].emoji}
+                </h2>
+            )}
         </>
     );
 };
