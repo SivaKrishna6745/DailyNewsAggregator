@@ -20,23 +20,28 @@ function App() {
     console.log(moodMap[mood].color);
 
     return (
-        <>
+        <div className="rounded-lg bg-gray-900">
             {loading ? (
                 <div>Loading data, please wait...</div>
             ) : error ? (
                 <div>Error while fetching data: {error}</div>
             ) : (
-                <>
-                    <h1 className="text-3xl">Daily News Aggregator</h1>
-                    <hr className="m-8" />
-                    <h2 className="text-2xl capitalize m-8" style={{ color: moodMap[mood].color }}>
-                        Today's news is {mood} {moodMap[mood].emoji}
-                    </h2>
-                    <NewsList articles={articles} />
-                    <UserMoodAnalyzer />
-                </>
+                <div className="flex justify-between">
+                    <div>
+                        <UserMoodAnalyzer />
+                    </div>
+                    <div className="w-0.5 h-[600px] bg-gray-600"></div>
+                    <div className="p-8">
+                        <h1 className="text-3xl">Daily News Aggregator</h1>
+                        <hr className="m-8" />
+                        <h2 className="text-2xl capitalize m-8" style={{ color: moodMap[mood].color }}>
+                            Today's news is {mood} {moodMap[mood].emoji}
+                        </h2>
+                        <NewsList articles={articles} />
+                    </div>
+                </div>
             )}
-        </>
+        </div>
     );
 }
 
