@@ -1,12 +1,8 @@
 export type Article = {
     id: number;
+    userId: number;
     title: string;
-    description: string;
-    source: {
-        name: string;
-    };
-    url: string;
-    urlToImage: string;
+    body: string;
 };
 
 export type News = {

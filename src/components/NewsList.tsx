@@ -7,9 +7,9 @@ type NewsListProps = {
 
 const NewsList = ({ articles }: NewsListProps) => {
     return (
-        <ul className="w-3xl m-auto">
+        <ul className="w-3xl m-auto h-[60vh] overflow-y-scroll">
             {articles.map((article: Article) => (
-                <NewsListItem article={article} />
+                <NewsListItem key={article.id} article={article} />
             ))}
         </ul>
     );

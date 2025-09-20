@@ -13,11 +13,10 @@ function App() {
         fetchArticles();
     }, []);
     const completeArticle = articles
-        .map((article: Article) => article.title + ' ' + article.description)
+        .map((article: Article) => article.title + ' ' + article.body)
         .join(' ')
         .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
     const { mood } = useMoodAnalysis(completeArticle);
-    console.log(moodMap[mood].color);
 
     return (
         <div className="rounded-lg bg-gray-900">
@@ -30,7 +29,7 @@ function App() {
                     <div>
                         <UserMoodAnalyzer />
                     </div>
-                    <div className="w-0.5 h-[600px] bg-gray-600"></div>
+                    <div className="w-0.5 h-[90dvh] bg-gray-600"></div>
                     <div className="p-8">
                         <h1 className="text-3xl">Daily News Aggregator</h1>
                         <hr className="m-8" />
