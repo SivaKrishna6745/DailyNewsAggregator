@@ -12,6 +12,8 @@ interface NewsState {
     nextPage: () => void;
 }
 
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+
 const useNewsStore = create<NewsState>((set, get) => ({
     articles: [],
     page: 1,
@@ -21,10 +23,11 @@ const useNewsStore = create<NewsState>((set, get) => ({
     fetchArticles: async () => {
         const { page } = get();
         set({ loading: true, error: null });
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10&_page=${page}`);
+        const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
         const data = await response.json();
-        const totalCount = response.headers.get('X-Total-Count');
-        set({ articles: data, loading: false, totalPosts: Number(totalCount) });
+        console.log(data);
+        const totalCount = data.totalResults;
+        set({ articles: data.articles, loading: false, totalPosts: Number(totalCount) });
     },
     prevPage: () => set((state) => ({ page: state.page - 1 })),
     nextPage: () => set((state) => ({ page: state.page + 1 })),

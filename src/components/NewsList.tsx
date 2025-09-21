@@ -16,7 +16,7 @@ const NewsList = ({ articles, prev, next }: NewsListProps) => {
         <div className="flex flex-col gap-8">
             <ul className="md:w-3xl m-auto h-[50vh] overflow-y-scroll">
                 {articles.map((article: Article) => (
-                    <NewsListItem key={article.id} article={article} />
+                    <NewsListItem key={article.title} article={article} />
                 ))}
             </ul>
             <div className="flex justify-center items-center gap-8">

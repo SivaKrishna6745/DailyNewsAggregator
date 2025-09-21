@@ -17,7 +17,7 @@ function App() {
     }, [fetchArticles, prevPage, nextPage]);
 
     const completeArticle = articles
-        .map((article: Article) => article.title + ' ' + article.body)
+        ?.map((article: Article) => article?.title + ' ' + article?.description)
         .join(' ')
         .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
     const { mood } = useMoodAnalysis(completeArticle);

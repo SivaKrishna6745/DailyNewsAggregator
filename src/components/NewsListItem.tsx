@@ -7,7 +7,7 @@ type NewsListItemProps = {
 };
 
 const NewsListItem = ({ article }: NewsListItemProps) => {
-    const cleanArticle = (article.title + ' ' + article.body).replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'"]/g, '');
+    const cleanArticle = (article.title + ' ' + article.description).replace(/[.,\/#!$%\^&\*;:{}=\-_`~()'"]/g, '');
     const { mood } = useMoodAnalysis(cleanArticle);
 
     return (
@@ -18,7 +18,7 @@ const NewsListItem = ({ article }: NewsListItemProps) => {
             <div className="text-left flex flex-col gap-8 lg:gap-4 group">
                 <p className="lg:group-hover:text-green-500 font-bold">{article.title}</p>
                 <p className="lg:opacity-0 lg:max-h-0 overflow-hidden transition-[opacity,max-height] duration-300 lg:group-hover:opacity-100 lg:group-hover:max-h-screen lg:group-hover:delay-100">
-                    {article.body.trim()}
+                    {article.description}
                 </p>
             </div>
             <p className="text-2xl">{moodMap[mood].emoji}</p>
