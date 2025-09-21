@@ -25,12 +25,12 @@ function App() {
             ) : error ? (
                 <div>Error while fetching data: {error}</div>
             ) : (
-                <div className="flex justify-between">
+                <div className="flex flex-col gap-4 md:flex-row justify-between">
                     <div>
                         <UserMoodAnalyzer />
                     </div>
-                    <div className="w-0.5 h-[90dvh] bg-gray-600"></div>
-                    <div className="p-8">
+                    <div className="w-full h-px md:w-0.5 md:h-[90dvh] bg-gray-600"></div>
+                    <div className="md:p-8">
                         <h1 className="text-3xl">Daily News Aggregator</h1>
                         <hr className="m-8" />
                         <h2 className="text-2xl capitalize m-8" style={{ color: moodMap[mood].color }}>
