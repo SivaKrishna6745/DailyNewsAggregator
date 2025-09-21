@@ -23,10 +23,7 @@ const UserMoodAnalyzer = () => {
                     onChange={(e) => setTypedInput(e.target.value)}
                 />
             </div>
-            <button
-                onClick={handleAnalysis}
-                className="w-full outline-none p-3 mt-8 bg-slate-600 text-white text-lg rounded-md cursor-pointer"
-            >
+            <button onClick={handleAnalysis} className="btn w-full p-3 mt-8 bg-slate-600 text-white">
                 Analyze
             </button>
             {mood && userInput !== '' && (
