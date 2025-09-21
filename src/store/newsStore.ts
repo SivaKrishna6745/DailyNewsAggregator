@@ -23,7 +23,9 @@ const useNewsStore = create<NewsState>((set, get) => ({
     fetchArticles: async () => {
         const { page } = get();
         set({ loading: true, error: null });
-        const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
+        const response = await fetch(
+            `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}&pageSize=10&page=${page}`
+        );
         const data = await response.json();
         console.log(data);
         const totalCount = data.totalResults;
